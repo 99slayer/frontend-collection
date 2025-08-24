@@ -1,0 +1,3 @@
+.btn {
+	@apply size-10 rounded-3xl hover:rounded-lg transition-all duration-150 ease-linear;
+}

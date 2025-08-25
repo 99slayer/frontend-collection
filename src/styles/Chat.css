@@ -1,5 +1,5 @@
 .message {
-	@apply py-2 flex flex-col;
+	@apply py-2 flex flex-col transition-all duration-300 ease-out;
 	min-width: 300px;
 	max-width: 48%;
 	border-width: var(--message-border-width);
@@ -21,14 +21,64 @@
 	@apply p-2
 }
 
-.message-user {
+.message-user-1 {
 	@apply self-end;
 	background-color: var(--color-bg-alt);
 	color: var(--color-text);
 }
 
-.message-nonuser {
+.message-user-2 {
 	@apply self-start;
 	background-color: var(--color-bg-alt);
 	color: var(--color-text);
+}
+
+.hidden-user-1 {
+	@apply translate-x-10 opacity-0;
+}
+
+.hidden-user-2 {
+	@apply -translate-x-10 opacity-0;
+}
+
+@keyframes chat-load {
+	0% {
+		transform: translateY(0px) scale(1);
+	}
+	50% {
+		transform: translateY(-6px) scale(0.1);
+	}
+	100% {
+		transform: translateY(1px) scale(1);
+	}
+}
+
+@keyframes test {
+	0% {
+		transform: scale(100%);
+	}
+	100% {
+		transform: scale(50%)
+	}
+}
+
+.loader {
+	--ani-delay: 120ms;
+	@apply size-2 rounded-full bg-bg;
+	animation: chat-load;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: infinite;
+}
+
+.loader-1 {
+	animation-delay: calc(var(--ani-delay) * 0);
+}
+
+.loader-2 {
+	animation-delay: calc(var(--ani-delay) * 1);
+}
+
+.loader-3 {
+	animation-delay: calc(var(--ani-delay) * 2);
 }

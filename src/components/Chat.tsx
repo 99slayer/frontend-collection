@@ -4,7 +4,7 @@ import React, {
 	useState,
 	type JSX
 } from "react";
-import messageArr from "../messageData";
+import { messageData } from "../data";
 import type { MessageInterface } from "../types";
 
 export default function Chat() {
@@ -12,7 +12,7 @@ export default function Chat() {
 	const [responding, setResponding] = useState<boolean>(true);
 
 	useEffect(() => {
-		if (messages.length === messageArr.length) {
+		if (messages.length === messageData.length) {
 			setResponding(false);
 			return;
 		}
@@ -22,7 +22,7 @@ export default function Chat() {
 			setResponding(false);
 			setMessages([
 				...messages,
-				<Message content={messageArr[messages.length]} />
+				<Message key={messages.length} content={messageData[messages.length]} />
 			]);
 		}, 3000);
 

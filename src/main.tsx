@@ -1,5 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
 import './styles/index.css';
 import App from './components/App.tsx';
@@ -31,4 +31,4 @@ createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<RouterProvider router={router} />
 	</StrictMode>,
-)
+);

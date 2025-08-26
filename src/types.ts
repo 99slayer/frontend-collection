@@ -4,3 +4,8 @@ export interface MessageInterface {
 	timestamp: string;
 	text: string;
 }
+
+export interface ThemeInterface {
+	name: string;
+	themeMain: string;
+}

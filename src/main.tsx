@@ -5,6 +5,7 @@ import './styles/index.css';
 import App from './components/App.tsx';
 import Chat from './components/Chat.tsx';
 import Frontend2 from './components/Frontend2.tsx';
+import Carousel from './components/Carousel.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
 			{
 				path: 'frontend2',
 				Component: Frontend2
+			},
+			{
+				path: 'carousel',
+				Component: Carousel
 			}
 		]
 	}

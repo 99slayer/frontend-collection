@@ -5,6 +5,7 @@
 @import "./Navbar.css";
 @import "./Sidebar.css";
 @import "./Chat.css";
+@import "./Carousel.css";
 
 * {
   box-sizing: border-box;
@@ -27,7 +28,7 @@ button {
   --color-primary: #3b82f6;
   --color-primary-hover: #2563eb;
 
-	/* theme splash colors */
+	/* theme main colors */
 	--color-theme-default: #ffffff;
 	--color-theme-one: #111827;
 	--color-theme-two: #00796b;

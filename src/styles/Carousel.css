@@ -1,0 +1,3 @@
+.card-animation {
+	@apply transition-all ease-out duration-500;
+}

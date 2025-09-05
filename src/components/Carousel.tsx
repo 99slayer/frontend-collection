@@ -1,4 +1,5 @@
 import {
+	useCallback,
 	useEffect,
 	useLayoutEffect,
 	useRef,
@@ -11,6 +12,7 @@ import { carouselData } from "../data";
 
 function Carousel() {
 	const displayRef = useRef<HTMLDivElement>(null);
+	const throttleRef = useRef<number>(Date.now());
 	const [index, setIndex] = useState<number>(0);
 	const [displayWidth, setDisplayWidth] = useState<number>(0);
 	const [animate, setAnimate] = useState<string>('');
@@ -27,20 +29,32 @@ function Carousel() {
 		setDisplayWidth(displayRef.current!.offsetWidth);
 	});
 
+	const cycleLeft = useCallback(() => {
+		if (animate) return;
+		throttleRef.current = Date.now();
+		setAnimate('left');
+	}, [animate]);
+
+	const cycleRight = useCallback(() => {
+		if (animate) return;
+		throttleRef.current = Date.now();
+		setAnimate('right');
+	}, [animate]);
+
 	useEffect(() => {
+		window.addEventListener('wheel', (e) => {
+			if (Date.now() - throttleRef.current <= 350) return;
+			if (e.deltaY > 0) {
+				cycleLeft();
+			} else cycleRight();
+		});
+
 		const timer = setTimeout(() => {
 			setOpen(true);
 		}, 100);
+
 		return () => clearTimeout(timer);
-	}, []);
-
-	const cycleLeft = () => {
-		setAnimate('left');
-	};
-
-	const cycleRight = () => {
-		setAnimate('right');
-	};
+	}, [cycleLeft, cycleRight]);
 
 	function manageIndex(direction: string): void {
 		if (direction === 'right') {
@@ -109,7 +123,7 @@ function Carousel() {
 					transform: `${animate ?
 						`translateX(${animate === 'right' ? cardWidth : -cardWidth}px)` :
 						'translateX(0px)'}`,
-					transition: `${animate ? 'transform 0.5s ease' : 'none'}`
+					transition: `${animate ? 'transform 0.3s ease' : 'none'}`
 				}}
 				onTransitionEnd={() => {
 					manageIndex(animate);

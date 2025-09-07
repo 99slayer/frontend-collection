@@ -39,7 +39,7 @@ export default function Chat() {
 
 	return (
 		<div className="max-w-[1000px] w-[100%] mx-auto">
-			<div className="py-20 px-10 flex flex-col gap-6">
+			<div className="p-6 flex flex-col gap-6">
 				{messages}
 				{responding ? <ResponseIndicator /> : <></>}
 			</div>

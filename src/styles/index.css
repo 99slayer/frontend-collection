@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @import "./Navbar.css";
-@import "./Sidebar.css";
 @import "./Chat.css";
 @import "./Carousel.css";
 
@@ -17,11 +16,24 @@ button {
 	cursor: pointer;
 }
 
-:root {
-  font-size: 16px;
+@media (max-width: 500px) {
+	:root {
+		font-size: 18px;
+		--spacing: 2px;
+	}
+}
 
+@media (min-width: 500px) {
+	:root {
+		font-size: 16px;
+		--spacing: 6px;
+	}
+}
+
+:root {
+	/* default theme */
   --color-bg: #ffffff;
-  --color-bg-alt: #f9fafb;
+  --color-bg-alt: #e8ebfd;
   --color-text: #111827;
   --color-text-muted: #6b7280;
   --color-border: #e5e7eb;
@@ -35,7 +47,15 @@ button {
 	--color-theme-three: #fb8c00;
 	--color-theme-four: #1b5e20;
 	--color-theme-five: #6366f1;
+
+	/* icon sizes */
+	--spacing-icon-1: 1.5rem;
+	--spacing-icon-2: 2rem;
 }
+
+/* body, :root {
+	height: 100vh;
+} */
 
 [data-theme="one"] {
   --color-bg: #111827;
@@ -115,4 +135,7 @@ button {
 	--color-theme-three: var(--color-theme-three);
 	--color-theme-four: var(--color-theme-four);
 	--color-theme-five: var(--color-theme-five);
+
+	--spacing-icon-1: var(--spacing-icon-1);
+	--spacing-icon-2: var(--spacing-icon-2);
 }

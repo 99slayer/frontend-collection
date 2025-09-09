@@ -17,7 +17,7 @@ export default function Navbar({ theme, setTheme, mode, setMode }: {
 }) {
 	const navData: { path: string, icon: JSX.Element }[] = [
 		{ path: '/chat', icon: <IoChatbox className="nav-button" /> },
-		{ path: '/frontend2', icon: <PiMouseScrollFill className="nav-button" /> },
+		{ path: '/column', icon: <PiMouseScrollFill className="nav-button" /> },
 		{ path: '/carousel', icon: <BiSolidCarousel className="nav-button" /> }
 	];
 

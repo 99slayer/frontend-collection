@@ -4,6 +4,7 @@
 
 @import "./Navbar.css";
 @import "./Chat.css";
+@import "./Column.css";
 @import "./Carousel.css";
 
 * {
@@ -19,7 +20,7 @@ button {
 @media (max-width: 500px) {
 	:root {
 		font-size: 18px;
-		--spacing: 2px;
+		--spacing: 3px;
 	}
 }
 
@@ -52,10 +53,6 @@ button {
 	--spacing-icon-1: 1.5rem;
 	--spacing-icon-2: 2rem;
 }
-
-/* body, :root {
-	height: 100vh;
-} */
 
 [data-theme="one"] {
   --color-bg: #111827;
@@ -138,4 +135,6 @@ button {
 
 	--spacing-icon-1: var(--spacing-icon-1);
 	--spacing-icon-2: var(--spacing-icon-2);
+	
+	--breakpoint-700: 700px;
 }

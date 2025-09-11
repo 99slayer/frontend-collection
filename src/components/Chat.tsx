@@ -24,12 +24,12 @@ export default function Chat() {
 				...messages,
 				<Message key={messages.length} content={messageData[messages.length]} />
 			]);
-		}, 3000);
+		}, 2000);
 
 		// loader timer
 		const timeout = setTimeout(() => {
 			setResponding(true);
-		}, 1500);
+		}, 500);
 
 		return () => {
 			clearInterval(interval);
@@ -67,7 +67,7 @@ function Message({ content }: { content: MessageInterface }) {
 				: "message-user-2 hidden-user-2"
 				}`}
 		>
-			<header className="flex justify-between">
+			<header className="flex flex-wrap justify-between font-bold">
 				<h3>{content.username}</h3>
 				<h3>{content.timestamp}</h3>
 			</header>

@@ -35,7 +35,7 @@ button {
 	/* default theme */
   --color-bg: #ffffff;
   --color-bg-alt: #e8ebfd;
-  --color-text: #111827;
+  --color-text: #1b356d;
   --color-text-muted: #6b7280;
   --color-border: #e5e7eb;
   --color-primary: #3b82f6;
@@ -87,7 +87,7 @@ button {
 [data-theme="four"] {
   --color-bg: #e8f5e9;
   --color-bg-alt: #c8e6c9;
-  --color-text: #1b5e20;
+  --color-text: #034e0d;
   --color-text-muted: #388e3c;
   --color-border: #a5d6a7;
   --color-primary: #2e7d32;

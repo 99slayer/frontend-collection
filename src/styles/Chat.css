@@ -1,7 +1,7 @@
 .message {
-	@apply py-2 flex flex-col transition-all duration-300 ease-out;
-	min-width: 300px;
-	max-width: 48%;
+	@apply w-full py-2 flex flex-col transition-all duration-300 ease-out;
+	min-width: 260px;
+	max-width: 44%;
 	border-width: var(--message-border-width);
 	border-style: var(--message-border-style);
 	border-color: var(--message-border-color);
@@ -11,14 +11,12 @@
 }
 
 .message header {
-	@apply px-2;
-	font-size: 1rem;
-	font-weight: 900;
+	@apply px-2 py-1;
 	background-color: var(--message-header-color);
 }
 
 .message p {
-	@apply p-2
+	@apply p-2;
 }
 
 .message-user-1 {

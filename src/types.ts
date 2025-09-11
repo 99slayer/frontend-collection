@@ -11,6 +11,7 @@ export interface MessageInterface {
 }
 
 export interface ColumnReviewInterface {
+	pfp: string;
 	username: string;
 	score: number;
 	header: string;
@@ -18,14 +19,18 @@ export interface ColumnReviewInterface {
 }
 
 export interface ColumnTestimonialInterface {
+	image: string;
+	name: string;
 	text: string;
 }
 
 export interface ColumnCompanyInterface {
 	companyName: string;
+	iconUrl: string;
 }
 
 export interface CarouselInterface {
 	title: string;
 	text: string;
+	image?: string;
 }

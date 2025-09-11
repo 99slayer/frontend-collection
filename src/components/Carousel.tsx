@@ -9,6 +9,7 @@ import {
 import useResizeObserver from "@react-hook/resize-observer";
 import type { CarouselInterface } from "../types";
 import { carouselData } from "../data";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 function Carousel() {
 	const displayRef = useRef<HTMLDivElement>(null);
@@ -97,7 +98,6 @@ function Carousel() {
 	}
 
 	return (
-
 		<div
 			ref={displayRef}
 			className={`flex-1 ${open ? '' : 'opacity-0'} flex justify-center relative bg-bg overflow-hidden`}
@@ -106,16 +106,16 @@ function Carousel() {
 			}}
 		>
 			<button
-				className="size-6 flex justify-center items-center absolute top-[50%] left-4 bg-white z-10"
+				className="absolute top-[50%] left-4 z-10"
 				onClick={() => cycleLeft()}
 			>
-				{"<"}
+				<FaArrowAltCircleLeft className="min-w-icon-2 min-h-icon-2 text-bg" />
 			</button>
 			<button
-				className="size-6 flex justify-center items-center absolute top-[50%] right-4 bg-white z-10"
+				className="absolute top-[50%] right-4 z-10"
 				onClick={() => cycleRight()}
 			>
-				{">"}
+				<FaArrowAltCircleRight className="min-w-icon-2 min-h-icon-2 text-bg" />
 			</button>
 			<div
 				className="flex-1 flex justify-center items-end"
@@ -181,7 +181,7 @@ function Card({ content, width, tier, group, animate }: {
 	return (
 		<div
 			ref={cardRef}
-			className={`flex-1 p-2 flex flex-col justify-start items-center rounded-lg shadow-2xl bg-primary ${animate !== '' ? 'card-animation' : ''}`}
+			className={`flex-1 p-2 flex flex-col justify-start items-center gap-2 rounded-lg shadow-2xl bg-primary ${animate !== '' ? 'card-animation' : ''}`}
 			style={{
 				width: `${width}px`,
 				height: `${100 - (finalTier * 10)}%`,
@@ -190,8 +190,13 @@ function Card({ content, width, tier, group, animate }: {
 			}}
 			onTransitionEnd={(e) => e.stopPropagation()}
 		>
-			<div>{content.title}</div>
-			<div>{content.text}</div>
+			<div className="font-bold">{content.title}</div>
+			<img
+				src={content.image}
+				alt=""
+				className="p-2 rounded-lg bg-bg"
+			/>
+			<div className="px-2">{content.text}</div>
 		</div>
 	);
 }

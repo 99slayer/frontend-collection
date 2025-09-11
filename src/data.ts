@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import type {
 	MessageInterface,
 	CarouselInterface,
@@ -34,82 +35,230 @@ export const themeData: ThemeInterface[] = [
 	},
 ];
 
-export const messageData: MessageInterface[] = [
-	{
-		userId: 12,
-		username: "user-1",
-		timestamp: "10:30 AM",
-		text: "placeholder",
-	},
-	{
-		userId: 117,
-		username: "user-2",
-		timestamp: "10:35 AM",
-		text: "placeholder",
+const user1 = {
+	id: 1,
+	name: faker.internet.username()
+};
+
+const user2 = {
+	id: 2,
+	name: faker.internet.username()
+};
+
+function createMessages(n: number): MessageInterface[] {
+	const messages = [];
+
+	for (let i = 0; i < n; i++) {
+		const user = i % 2 !== 0 ? user1 : user2;
+		const date = new Date(Date.now() + i * 120000);
+
+		messages.push({
+			userId: user.id,
+			username: user.name,
+			timestamp: date.toLocaleTimeString(),
+			text: faker.lorem.sentence(),
+		});
 	}
+
+	return messages;
+}
+
+export const messageData: MessageInterface[] = createMessages(10);
+
+export const columnImageUrls = [
+	'/public/images/makeup.jpeg',
+	'/public/images/milk.jpeg',
+	'/public/images/watch.jpeg'
 ];
 
 export const columnReviewData: ColumnReviewInterface[] = [
 	{
-		username: 'JOHN SMITH',
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
 		score: 4,
-		header: 'Vestibulum molestie purus in diam feugiat luctus.',
-		text: 'Suspendisse mollis quam a orci accumsan viverra. Etiam vel consectetur nibh, a egestas risus. Fusce fermentum ligula velit. Proin quis maximus magna. Aliquam maximus viverra nibh at efficitur. Vestibulum molestie purus in diam feugiat luctus.',
+		header: 'Exactly what I needed.',
+		text: 'Works as promised and made things so much easier for me.',
 	},
 	{
-		username: 'MARRY JENKINS',
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
 		score: 5,
-		header: 'Vestibulum at aliquam augue.',
-		text: 'Vestibulum at aliquam augue. In sit amet lectus euismod, tristique turpis in, bibendum velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non hendrerit eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie magna mattis, vulputate nisl non, pulvinar ligula. Etiam ligula enim, aliquet vel risus id, auctor ullamcorper tortor. Curabitur sed est nec quam cursus porttitor.',
+		header: 'Smooth experience from start to finish.',
+		text: 'The setup was simple and I had no issues getting started.',
 	},
 	{
-		username: 'BOB MCBRIAN',
-		score: 3,
-		header: 'Fusce tempus nibh accumsan aliquet consectetur.',
-		text: 'Fusce tempus nibh accumsan aliquet consectetur. Vivamus vitae ipsum tempor, consequat justo id, interdum risus.',
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
+		score: 5,
+		header: 'Great value for the price.',
+		text: 'I didn’t expect this level of quality, especially at this cost.',
 	},
 	{
-		username: 'JOE LEE',
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
 		score: 10,
-		header: 'Fusce tempus nibh accumsan aliquet consectetur.',
-		text: 'Fusce tempus nibh accumsan aliquet consectetur. Vivamus vitae ipsum tempor, consequat justo id, interdum risus.',
+		header: 'Reliable and easy to use.',
+		text: 'Everything just works the way it should. No complaints here.',
 	},
 	{
-		username: 'TAMMY OLSON',
-		score: 2,
-		header: 'Fusce tempus nibh accumsan aliquet consectetur.',
-		text: 'Vivamus vitae ipsum tempor, consequat justo id, interdum risus.',
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
+		score: 4,
+		header: 'Surprisingly exceeded my expectations.',
+		text: 'I wasn’t sure what to expect, but I’ve been pleasantly surprised.',
+	},
+	{
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
+		score: 4,
+		header: 'Simple, clean, and effective.',
+		text: 'It does exactly what I need without being complicated.',
+	},
+	{
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
+		score: 4,
+		header: 'Customer support was fantastic.',
+		text: 'Any time I had a question, the team was quick to respond.',
+	},
+	{
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
+		score: 5,
+		header: 'Convenient and reliable.',
+		text: 'I use it every day now—it’s become part of my routine.',
+	},
+	{
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
+		score: 4,
+		header: 'Looks great and performs well.',
+		text: 'It’s rare to find something that balances both design and function.',
+	},
+	{
+		pfp: faker.image.personPortrait(),
+		username: faker.internet.username(),
+		score: 5,
+		header: 'Would definitely recommend.',
+		text: 'I’ve already told a few friends about it. Totally worth trying.',
 	},
 ];
 
 export const columnTestimonialData: ColumnTestimonialInterface[] = [
 	{
-		text: 'This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial.'
+		image: faker.image.personPortrait({ sex: 'male' }),
+		name: faker.person.fullName({ sex: 'male' }),
+		text: "I’ve been looking for something that would make my daily routine less stressful, and this turned out to be the perfect fit. It works consistently and feels like it was designed with real people in mind. I don’t have to overthink it, I just use it and it does what it should every single time."
 	},
 	{
-		text: 'This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial.'
+		image: faker.image.personPortrait({ sex: 'female' }),
+		name: faker.person.fullName({ sex: 'female' }),
+		text: "From the moment I first tried it, everything felt simple and intuitive. There were no complicated steps, and I didn’t have to spend hours figuring things out. It just worked right out of the box, and that alone made a huge difference for me. I can see myself using this for a long time."
 	},
 	{
-		text: 'This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial. This is a testimonial.'
+		image: faker.image.personPortrait({ sex: 'male' }),
+		name: faker.person.fullName({ sex: 'male' }),
+		text: "I wasn’t sure if it would really hold up, especially since the cost was lower than I expected. But after using it for several weeks, I can say it definitely delivers on quality. It feels dependable and doesn’t cut corners. Honestly, I feel like I got more than what I paid for."
 	}
 ];
 
 export const columnCompanyData: ColumnCompanyInterface[] = [
 	{
-		companyName: 'COMPANY NAME'
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-357.png',
 	},
 	{
-		companyName: 'COMPANY NAME'
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-361.png',
 	},
 	{
-		companyName: 'COMPANY NAME'
-	}
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-371.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-374.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-381.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-384.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-392.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-394.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-397.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-403.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-327.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-295.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-300.png',
+	},
+	{
+		companyName: faker.company.name(),
+		iconUrl: '/public/icons/logoipsum-274.png',
+	},
 ];
 
 export const carouselData: CarouselInterface[] = [
 	{
-		title: '1',
-		text: 'one'
+		title: '2025 Profit Projections',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: `https://quickchart.io/chart?c={
+				type: 'bar',
+					data: {
+						labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+						datasets: [
+							{
+								type: 'line',
+								label: 'Dataset 1',
+								borderColor: 'rgb(54, 162, 235)',
+								borderWidth: 2,
+								fill: false,
+								data: [-33, 26, 29, 89, -41, 70, -84],
+							},
+							{
+								label: 'Dataset 2',
+								backgroundColor: 'rgb(255, 99, 132)',
+								data: [-42, 73, -69, -94, -81, 18, 87],
+								borderColor: 'white',
+								borderWidth: 2,
+							},
+							{
+								label: 'Dataset 3',
+								backgroundColor: 'rgb(75, 192, 192)',
+								data: [93, 60, -15, 77, -59, 82, -44],
+							},
+						],
+					},
+					options: {
+						title: {
+							display: true,
+							text: 'My chart',
+						},
+					},
+				}`
 	},
 	{
 		title: '2',

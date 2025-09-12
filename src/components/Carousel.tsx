@@ -194,7 +194,7 @@ function Card({ content, width, tier, group, animate }: {
 			<img
 				src={content.image}
 				alt=""
-				className="p-2 rounded-lg bg-bg"
+				className="rounded-lg"
 			/>
 			<div className="px-2">{content.text}</div>
 		</div>

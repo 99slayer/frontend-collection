@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import QuickChart from 'quickchart-js';
 import type {
 	MessageInterface,
 	CarouselInterface,
@@ -225,87 +226,89 @@ export const columnCompanyData: ColumnCompanyInterface[] = [
 	},
 ];
 
+function createChart(): string {
+	const chartTypes = ['bar', 'line', 'radar', 'pie', 'doughnut', 'polarArea'];
+	const chart = new QuickChart();
+	const labelCount = faker.number.int({ min: 3, max: 4 });
+	const chosenType = chartTypes[faker.number.int({ max: chartTypes.length - 1 })];
+
+	function getDataset(pointCount: number): { label: string; data: number[]; } {
+		return {
+			label: faker.word.noun(),
+			data: [...Array(pointCount)].map(() => { return faker.number.int({ min: 0, max: 1000 }); })
+		};
+	};
+
+	chart.setConfig({
+		type: chosenType,
+		data: {
+			labels: [...Array(labelCount)].map(() => { return faker.word.noun(); }),
+			datasets: [...Array(labelCount)].map(() => { return getDataset(labelCount); })
+		}
+	});
+
+	return chart.getUrl();
+}
+
 export const carouselData: CarouselInterface[] = [
 	{
-		title: '2025 Profit Projections',
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
-		image: `https://quickchart.io/chart?c={
-				type: 'bar',
-					data: {
-						labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-						datasets: [
-							{
-								type: 'line',
-								label: 'Dataset 1',
-								borderColor: 'rgb(54, 162, 235)',
-								borderWidth: 2,
-								fill: false,
-								data: [-33, 26, 29, 89, -41, 70, -84],
-							},
-							{
-								label: 'Dataset 2',
-								backgroundColor: 'rgb(255, 99, 132)',
-								data: [-42, 73, -69, -94, -81, 18, 87],
-								borderColor: 'white',
-								borderWidth: 2,
-							},
-							{
-								label: 'Dataset 3',
-								backgroundColor: 'rgb(75, 192, 192)',
-								data: [93, 60, -15, 77, -59, 82, -44],
-							},
-						],
-					},
-					options: {
-						title: {
-							display: true,
-							text: 'My chart',
-						},
-					},
-				}`
+		image: createChart()
 	},
 	{
-		title: '2',
-		text: 'two'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '3',
-		text: 'three'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '4',
-		text: 'four'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '5',
-		text: 'five'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '6',
-		text: 'six'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '7',
-		text: 'seven'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '8',
-		text: 'eight'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '9',
-		text: 'nine'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '10',
-		text: 'ten'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '11',
-		text: 'eleven'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 	{
-		title: '12',
-		text: 'twelve'
+		title: (faker.word.adjective() + ' ' + faker.word.noun() + ' ' + 'graph').toUpperCase(),
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nulla semper purus mattis mattis. Mauris volutpat laoreet sollicitudin. Fusce quis dolor nunc. Proin quis neque nec sapien pellentesque pretium. Sed non purus magna. Praesent auctor porttitor erat, at cursus nibh iaculis quis. Quisque iaculis est sed lacus placerat dapibus. Integer tincidunt eros nec est lacinia semper nec tincidunt eros. Quisque sed eros vel neque lacinia scelerisque. Nullam neque nibh, bibendum sit amet pretium et, commodo eu ante. Maecenas sed felis nec ipsum aliquam tempor.',
+		image: createChart()
 	},
 ];

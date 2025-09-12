@@ -62,7 +62,7 @@
 
 .loader {
 	--ani-delay: 120ms;
-	@apply size-2 rounded-full bg-bg;
+	@apply size-[8px] rounded-full bg-bg;
 	animation: chat-load;
 	animation-duration: 1s;
 	animation-timing-function: ease-out;

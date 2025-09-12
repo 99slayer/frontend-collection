@@ -8,17 +8,23 @@ import { messageData } from "../data";
 import type { MessageInterface } from "../types";
 
 export default function Chat() {
+	const ref = useRef<HTMLDivElement>(null);
 	const [messages, setMessages] = useState<JSX.Element[]>([]);
 	const [responding, setResponding] = useState<boolean>(true);
 
 	useEffect(() => {
 		if (messages.length === messageData.length) {
 			setResponding(false);
-			return;
+			const resetTimer = setTimeout(() => {
+				setMessages([]);
+			}, 300);
+
+			return () => {
+				clearTimeout(resetTimer);
+			};
 		}
 
-		// message timer
-		const interval = setInterval(() => {
+		const messageInterval = setInterval(() => {
 			setResponding(false);
 			setMessages([
 				...messages,
@@ -26,22 +32,29 @@ export default function Chat() {
 			]);
 		}, 2000);
 
-		// loader timer
-		const timeout = setTimeout(() => {
+		const loaderTimer = setTimeout(() => {
 			setResponding(true);
 		}, 500);
 
 		return () => {
-			clearInterval(interval);
-			clearTimeout(timeout);
+			clearInterval(messageInterval);
+			clearTimeout(loaderTimer);
 		};
 	}, [messages]);
 
+	useEffect(() => {
+		ref.current!.scrollTop = 100000;
+	}, [responding]);
+
 	return (
-		<div className="max-w-[1000px] w-[100%] mx-auto">
+		<div
+			ref={ref}
+			className="max-w-[1000px] w-[100%] mx-auto overflow-hidden"
+		>
 			<div className="p-6 flex flex-col gap-6">
 				{messages}
-				{responding ? <ResponseIndicator /> : <></>}
+				<div className="h-50" />
+				{responding ? <ResponseIndicator /> : <div className="h-[24px]"></div>}
 			</div>
 		</div>
 	);
@@ -78,7 +91,7 @@ function Message({ content }: { content: MessageInterface }) {
 
 function ResponseIndicator() {
 	return (
-		<div className="justify-self-center self-center p-2 flex gap-1 rounded-full bg-primary">
+		<div className="justify-self-center self-center p-[8px] flex gap-1 rounded-full bg-primary">
 			<div className="loader loader-1"></div>
 			<div className="loader loader-2"></div>
 			<div className="loader loader-3"></div>

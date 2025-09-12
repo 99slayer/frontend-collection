@@ -50,12 +50,16 @@ function createMessages(n: number): MessageInterface[] {
 
 	for (let i = 0; i < n; i++) {
 		const user = i % 2 !== 0 ? user1 : user2;
-		const date = new Date(Date.now() + i * 120000);
+		const date = new Date(Date.now() + i * 123500);
 
 		messages.push({
 			userId: user.id,
 			username: user.name,
-			timestamp: date.toLocaleTimeString(),
+			timestamp: date.toLocaleTimeString("en-US", {
+				hour: "numeric",
+				minute: "2-digit",
+				hour12: true
+			}),
 			text: faker.lorem.sentence(),
 		});
 	}
@@ -63,7 +67,7 @@ function createMessages(n: number): MessageInterface[] {
 	return messages;
 }
 
-export const messageData: MessageInterface[] = createMessages(10);
+export const messageData: MessageInterface[] = createMessages(40);
 
 export const columnImageUrls = [
 	'/public/images/makeup.jpeg',

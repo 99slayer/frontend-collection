@@ -17,18 +17,28 @@ function Carousel() {
 	const [index, setIndex] = useState<number>(0);
 	const [displayWidth, setDisplayWidth] = useState<number>(0);
 	const [animate, setAnimate] = useState<string>('');
-	const displayLimit = 7; // includes overflow cards
+	const [displayLimit, setDisplayLimit] = useState<number>(0); // includes overflow cards
+	const [cardWidth, setCardWidth] = useState<number>(0);
 	const [open, setOpen] = useState<boolean>(false);
 
-	const cardWidth = displayWidth / (displayLimit - 4);
+	useResizeObserver(displayRef, () => {
+		setDisplayWidth(displayRef.current!.offsetWidth);
+	});
 
 	useLayoutEffect(() => {
 		setDisplayWidth(displayRef.current!.offsetWidth);
 	}, []);
 
-	useResizeObserver(displayRef, () => {
-		setDisplayWidth(displayRef.current!.offsetWidth);
-	});
+	useLayoutEffect(() => {
+		if (displayWidth <= 0) return;
+
+		const minCardWidth = 400;
+		let limit = Math.floor(displayWidth / minCardWidth);
+		if (limit % 2 === 0) limit += 1;
+
+		setCardWidth(displayWidth / limit);
+		setDisplayLimit(limit + 2);
+	}, [displayWidth]);
 
 	const cycleLeft = useCallback(() => {
 		if (animate) return;
@@ -72,6 +82,8 @@ function Carousel() {
 	}
 
 	function createCards(arr: CarouselInterface[]): JSX.Element[] {
+		if (displayWidth <= 0) return [];
+
 		const elements: JSX.Element[] = [];
 		const midIndex: number = Math.floor(displayLimit / 2);
 		arr = [...arr, ...arr];
@@ -106,16 +118,16 @@ function Carousel() {
 			}}
 		>
 			<button
-				className="absolute top-[50%] left-4 z-10"
+				className="opacity-60 absolute top-[50%] left-4 z-10 hover:opacity-100"
 				onClick={() => cycleLeft()}
 			>
-				<FaArrowAltCircleLeft className="min-w-icon-2 min-h-icon-2 text-bg" />
+				<FaArrowAltCircleLeft className="min-w-icon-2 min-h-icon-2 rounded-full text-bg bg-primary" />
 			</button>
 			<button
-				className="absolute top-[50%] right-4 z-10"
+				className="opacity-60 absolute top-[50%] right-4 z-10 hover:opacity-100"
 				onClick={() => cycleRight()}
 			>
-				<FaArrowAltCircleRight className="min-w-icon-2 min-h-icon-2 text-bg" />
+				<FaArrowAltCircleRight className="min-w-icon-2 min-h-icon-2 rounded-full text-bg bg-primary" />
 			</button>
 			<div
 				className="flex-1 flex justify-center items-end"
@@ -143,10 +155,7 @@ function Card({ content, width, tier, group, animate }: {
 	group: number;
 	animate: string;
 }) {
-	const cardRef = useRef<HTMLDivElement>(null);
 	const [finalTier, setFinalTier] = useState<number>(tier);
-	const [offsetX, setOffsetX] = useState<number>(0);
-
 	const base = 0.12;
 
 	useEffect(() => {
@@ -162,30 +171,13 @@ function Card({ content, width, tier, group, animate }: {
 		}
 	}, [group, animate]);
 
-	useEffect(() => {
-		let x;
-		if (animate === 'right') {
-			x = group === 1 ? 1 : -1;
-		} else {
-			x = group === 1 || group === 2 ? 1 : -1;
-		}
-
-		let prevSum = 0;
-		for (let i = 0; i <= finalTier; i++) {
-			prevSum += i;
-		}
-
-		setOffsetX((width * ((finalTier + prevSum) * base)) * x);
-	}, [width, group, animate, finalTier]);
-
 	return (
 		<div
-			ref={cardRef}
-			className={`flex-1 p-2 flex flex-col justify-start items-center gap-2 rounded-lg shadow-2xl bg-primary ${animate !== '' ? 'card-animation' : ''}`}
+			className={`flex-1 p-2 flex flex-col justify-start items-center gap-2 border-2 border-bg border-b-0 rounded-t-xl bg-primary ${animate !== '' ? 'card-animation' : ''}`}
 			style={{
 				width: `${width}px`,
 				height: `${100 - (finalTier * 10)}%`,
-				transform: `translateX(${offsetX}px) translateY(${100 * (finalTier * base)}%) scale(${1 - (finalTier * base)})`,
+				transform: `translateY(${100 * (finalTier * base)}%)`,
 				zIndex: `${20 - finalTier}`
 			}}
 			onTransitionEnd={(e) => e.stopPropagation()}

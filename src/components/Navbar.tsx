@@ -8,6 +8,7 @@ import { PiMouseScrollFill } from "react-icons/pi";
 import { BiSolidCarousel } from "react-icons/bi";
 import { themeData } from "../data";
 import type { ThemeInterface } from "../types";
+import { TbCircleNumber1Filled, TbCircleNumber2Filled, TbCircleNumber3Filled } from "react-icons/tb";
 
 export default function Navbar({ theme, setTheme, mode, setMode }: {
 	theme: string,
@@ -40,23 +41,6 @@ export default function Navbar({ theme, setTheme, mode, setMode }: {
 		return btns;
 	};
 
-	const createModeButtons = (modes: string[]): JSX.Element[] => {
-		const btns = [];
-
-		for (const x in modes) {
-			const m = modes[x];
-			btns.push(
-				<button
-					key={x}
-					className={`style-btn bg-primary ${mode === m ? 'current-btn' : ''}`}
-					onClick={() => setMode(m)}
-				></button>
-			);
-		}
-
-		return btns;
-	};
-
 	const createThemeButtons = (themes: ThemeInterface[]): JSX.Element[] => {
 		const btns = [];
 
@@ -68,6 +52,7 @@ export default function Navbar({ theme, setTheme, mode, setMode }: {
 					key={x}
 					className={`style-btn ${t.themeMain} ${theme === t.name ? 'current-btn' : ''}`}
 					onClick={() => setTheme(t.name)}
+					title={t.name}
 				></button>
 			);
 		}
@@ -76,9 +61,9 @@ export default function Navbar({ theme, setTheme, mode, setMode }: {
 	};
 
 	return (
-		<div className="p-2 flex justify-center items-center flex-wrap gap-2 bg-bg">
+		<div className="p-2 pb-[12px] flex justify-center items-center flex-wrap gap-2 bg-bg 700:p-2">
 			<div
-				className="p-2 flex justify-center gap-2 rounded-lg bg-bg-alt"
+				className="p-2 flex justify-center gap-2 rounded-mode-md bg-primary border-mode-sm shadow-mode-sm mode-transform"
 				title="layout menu"
 			>
 				<RiLayoutFill className="nav-icon" />
@@ -86,15 +71,31 @@ export default function Navbar({ theme, setTheme, mode, setMode }: {
 			</div>
 
 			<div
-				className="p-2 flex items-center flex-wrap gap-2 bg-bg-alt rounded-lg"
+				className="p-2 flex items-center flex-wrap gap-2 bg-primary rounded-mode-md border-mode-sm shadow-mode-sm mode-transform"
 				title="style menu"
 			>
 				<MdStyle className="nav-icon" />
-				{createModeButtons(['default', 'crazy'])}
+				<div className="flex items-center gap-2">
+					<button onClick={() => setMode('default')}>
+						<TbCircleNumber1Filled
+							className={`min-w-icon min-h-icon ${mode === 'default' ? 'text-bg bg-text rounded-mode-sm' : 'text-text'}`}
+						/>
+					</button>
+					<button onClick={() => setMode('crisp')}>
+						<TbCircleNumber2Filled
+							className={`min-w-icon min-h-icon ${mode === 'crisp' ? 'text-bg bg-text rounded-mode-sm' : 'text-text'}`}
+						/>
+					</button>
+					<button onClick={() => setMode('crazy')}>
+						<TbCircleNumber3Filled
+							className={`min-w-icon min-h-icon ${mode === 'crazy' ? 'text-bg bg-text rounded-mode-sm' : 'text-text'}`}
+						/>
+					</button>
+				</div>
 			</div>
 
 			<div
-				className="p-2 flex flex-wrap gap-2 bg-bg-alt rounded-lg"
+				className="p-2 flex flex-wrap gap-2 bg-primary rounded-mode-md border-mode-sm shadow-mode-sm mode-transform"
 				title="theme menu"
 			>
 				<IoMdColorPalette className="nav-icon" />
@@ -110,7 +111,7 @@ function NavButton({ path, icon }: { path: string, icon: JSX.Element }) {
 
 	return (
 		<button
-			className={path === location.pathname ? 'text-primary-hover' : 'text-primary'}
+			className={`${path === location.pathname ? 'text-bg bg-text rounded-mode-sm' : 'text-text'}`}
 			onClick={() => navigate(path)}
 		>
 			{icon}

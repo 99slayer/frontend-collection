@@ -15,24 +15,24 @@ export const themeData: ThemeInterface[] = [
 		themeMain: 'bg-theme-default'
 	},
 	{
-		name: 'one',
-		themeMain: 'bg-theme-one'
+		name: 'baby-blue',
+		themeMain: 'bg-theme-baby-blue'
 	},
 	{
-		name: 'two',
-		themeMain: 'bg-theme-two'
+		name: 'coral',
+		themeMain: 'bg-theme-coral'
 	},
 	{
-		name: 'three',
-		themeMain: 'bg-theme-three'
+		name: 'popcorn',
+		themeMain: 'bg-theme-popcorn'
 	},
 	{
-		name: 'four',
-		themeMain: 'bg-theme-four'
+		name: 'mint',
+		themeMain: 'bg-theme-mint'
 	},
 	{
-		name: 'five',
-		themeMain: 'bg-theme-five'
+		name: 'black-cherry',
+		themeMain: 'bg-theme-black-cherry'
 	},
 ];
 
@@ -71,9 +71,9 @@ function createMessages(n: number): MessageInterface[] {
 export const messageData: MessageInterface[] = createMessages(40);
 
 export const columnImageUrls = [
-	'/public/images/makeup.jpeg',
-	'/public/images/milk.jpeg',
-	'/public/images/watch.jpeg'
+	'/images/makeup.jpeg',
+	'/images/milk.jpeg',
+	'/images/watch.jpeg'
 ];
 
 export const columnReviewData: ColumnReviewInterface[] = [
@@ -170,59 +170,59 @@ export const columnTestimonialData: ColumnTestimonialInterface[] = [
 export const columnCompanyData: ColumnCompanyInterface[] = [
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-357.png',
+		iconUrl: '/icons/logoipsum-357.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-361.png',
+		iconUrl: '/icons/logoipsum-361.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-371.png',
+		iconUrl: '/icons/logoipsum-371.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-374.png',
+		iconUrl: '/icons/logoipsum-374.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-381.png',
+		iconUrl: '/icons/logoipsum-381.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-384.png',
+		iconUrl: '/icons/logoipsum-384.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-392.png',
+		iconUrl: '/icons/logoipsum-392.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-394.png',
+		iconUrl: '/icons/logoipsum-394.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-397.png',
+		iconUrl: '/icons/logoipsum-397.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-403.png',
+		iconUrl: '/icons/logoipsum-403.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-327.png',
+		iconUrl: '/icons/logoipsum-327.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-295.png',
+		iconUrl: '/icons/logoipsum-295.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-300.png',
+		iconUrl: '/icons/logoipsum-300.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/public/icons/logoipsum-274.png',
+		iconUrl: '/icons/logoipsum-274.png',
 	},
 ];
 

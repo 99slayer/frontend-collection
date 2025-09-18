@@ -51,10 +51,9 @@ export default function Chat() {
 			ref={ref}
 			className="max-w-[1000px] w-[100%] mx-auto overflow-hidden"
 		>
-			<div className="p-6 flex flex-col gap-6">
+			<div className="min-h-full p-6 flex flex-col gap-4 bg-bg-alt border-mode-sm border-y-none">
 				{messages}
-				<div className="h-50" />
-				{responding ? <ResponseIndicator /> : <div className="h-[24px]"></div>}
+				{responding ? <ResponseIndicator /> : <div className="h-[26px]"></div>}
 			</div>
 		</div>
 	);
@@ -76,22 +75,22 @@ function Message({ content }: { content: MessageInterface }) {
 		<div
 			ref={ref}
 			className={`message ${content.userId === Number(import.meta.env.VITE_USER_ID)
-				? "message-user-1 hidden-user-1"
-				: "message-user-2 hidden-user-2"
-				}`}
+				? "self-end hidden-user-1"
+				: "self-start hidden-user-2"
+				} text-text rounded-mode-md border-mode-sm shadow-mode-sm mode-transform`}
 		>
-			<header className="flex flex-wrap justify-between font-bold">
+			<header className="mx-2 flex flex-wrap justify-between rounded-mode-sm font-mode-sub-header font-bold bg-primary border-mode-sm">
 				<h3>{content.username}</h3>
 				<h3>{content.timestamp}</h3>
 			</header>
-			<p>{content.text}</p>
+			<p className="p-2">{content.text}</p>
 		</div>
 	);
 }
 
 function ResponseIndicator() {
 	return (
-		<div className="justify-self-center self-center p-[8px] flex gap-1 rounded-full bg-primary">
+		<div className="mt-auto h-[26px] justify-self-center self-center p-[8px] flex gap-1 rounded-full bg-primary border-mode-sm">
 			<div className="loader loader-1"></div>
 			<div className="loader loader-2"></div>
 			<div className="loader loader-3"></div>

@@ -1,15 +1,15 @@
 .nav-icon {
-	@apply min-w-icon-2 min-h-icon-2 text-primary;
+	@apply min-w-icon min-h-icon text-text;
 }
 
 .nav-button {
-	@apply min-w-icon-2 min-h-icon-2;
+	@apply min-w-icon min-h-icon;
 }
 
 .style-btn {
-	@apply min-w-icon-2 min-h-icon-2 rounded-3xl hover:rounded-lg transition-all duration-150 ease-linear;
+	@apply min-w-icon min-h-icon rounded-3xl hover:rounded-md transition-all duration-150 ease-linear;
 }
 
 .current-btn {
-	border: 2px solid var(--color-primary-hover);
+	border: 1px solid rgb(34, 34, 34);
 }

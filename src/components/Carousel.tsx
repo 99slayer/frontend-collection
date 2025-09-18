@@ -121,19 +121,19 @@ function Carousel() {
 				className="opacity-60 absolute top-[50%] left-4 z-10 hover:opacity-100"
 				onClick={() => cycleLeft()}
 			>
-				<FaArrowAltCircleLeft className="min-w-icon-2 min-h-icon-2 rounded-full text-bg bg-primary" />
+				<FaArrowAltCircleLeft className="min-w-icon min-h-icon rounded-full text-text bg-primary" />
 			</button>
 			<button
 				className="opacity-60 absolute top-[50%] right-4 z-10 hover:opacity-100"
 				onClick={() => cycleRight()}
 			>
-				<FaArrowAltCircleRight className="min-w-icon-2 min-h-icon-2 rounded-full text-bg bg-primary" />
+				<FaArrowAltCircleRight className="min-w-icon min-h-icon rounded-full text-text bg-primary" />
 			</button>
 			<div
-				className="flex-1 flex justify-center items-end"
+				className="flex-1 flex justify-center items-end gap-[8px]"
 				style={{
 					transform: `${animate ?
-						`translateX(${animate === 'right' ? cardWidth : -cardWidth}px)` :
+						`translateX(${animate === 'right' ? cardWidth + 8 : -(cardWidth + 8)}px)` :
 						'translateX(0px)'}`,
 					transition: `${animate ? 'transform 0.3s ease' : 'none'}`
 				}}
@@ -173,22 +173,22 @@ function Card({ content, width, tier, group, animate }: {
 
 	return (
 		<div
-			className={`flex-1 p-2 flex flex-col justify-start items-center gap-2 border-2 border-bg border-b-0 rounded-t-xl bg-primary ${animate !== '' ? 'card-animation' : ''}`}
+			className={`flex-1 p-2 flex flex-col justify-start items-center gap-2 border-2 border-bg border-b-0 rounded-t-mode-md text-text bg-primary shadow-mode-sm border-mode-sm ${animate !== '' ? 'card-animation' : ''}`}
 			style={{
 				width: `${width}px`,
-				height: `${100 - (finalTier * 10)}%`,
-				transform: `translateY(${100 * (finalTier * base)}%)`,
+				height: `${100 - (finalTier * 6)}%`,
+				transform: `translateY(${(100 * (finalTier * base)) + 1}%)`,
 				zIndex: `${20 - finalTier}`
 			}}
 			onTransitionEnd={(e) => e.stopPropagation()}
 		>
-			<div className="font-bold">{content.title}</div>
+			<h2 className="text-center font-mode-header font-bold">{content.title}</h2>
 			<img
 				src={content.image}
 				alt=""
-				className="rounded-lg"
+				className="p-1 rounded-mode-sm bg-white border-mode-sm shadow-mode-sm"
 			/>
-			<div className="px-2">{content.text}</div>
+			<p className="p-2 max-[500px]:leading-[16px]">{content.text}</p>
 		</div>
 	);
 }

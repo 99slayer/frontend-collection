@@ -145,7 +145,7 @@ function Companies({ product }: { product: { name: string } }) {
 		<div className="w-full p-2 flex flex-col rounded-mode-sm bg-primary border-mode-sm shadow-mode-sm">
 			<div className="px-2 rounded-mode-sm bg-bg border-mode-sm">
 				<h2 className="text-center font-mode-header text-2xl font-bold">
-					{`Only a few of the companies that rely on ${product.name} everyday!`}
+					{`A few of the companies that rely on ${product.name} everyday!`}
 				</h2>
 			</div>
 			<div className="p-4 flex flex-wrap justify-center items-center gap-2">

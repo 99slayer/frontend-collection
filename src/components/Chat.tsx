@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import { messageData } from "../data";
 import type { MessageInterface } from "../types";
+import { faker } from "@faker-js/faker";
 
 export default function Chat() {
 	const ref = useRef<HTMLDivElement>(null);
@@ -30,7 +31,7 @@ export default function Chat() {
 				...messages,
 				<Message key={messages.length} content={messageData[messages.length]} />
 			]);
-		}, 2000);
+		}, faker.number.int({ min: 1000, max: 2000 }));
 
 		const loaderTimer = setTimeout(() => {
 			setResponding(true);

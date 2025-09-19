@@ -96,7 +96,7 @@ export default function Navbar({ theme, setTheme, mode, setMode }: {
 
 			<div
 				className="p-2 flex flex-wrap gap-2 bg-primary rounded-mode-md border-mode-sm shadow-mode-sm mode-transform"
-				title="theme menu"
+				title="theme picker"
 			>
 				<IoMdColorPalette className="nav-icon" />
 				{createThemeButtons(themeData)}

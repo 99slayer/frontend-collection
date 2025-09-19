@@ -71,9 +71,11 @@ function createMessages(n: number): MessageInterface[] {
 export const messageData: MessageInterface[] = createMessages(40);
 
 export const columnImageUrls = [
-	'/images/makeup.jpeg',
-	'/images/milk.jpeg',
-	'/images/watch.jpeg'
+	'./images/makeup.jpeg',
+	'./images/milk.jpeg',
+	'./images/watch.jpeg',
+	'./images/lotion.jpg',
+	'./images/soap.jpg'
 ];
 
 export const columnReviewData: ColumnReviewInterface[] = [
@@ -170,59 +172,59 @@ export const columnTestimonialData: ColumnTestimonialInterface[] = [
 export const columnCompanyData: ColumnCompanyInterface[] = [
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-357.png',
+		iconUrl: './icons/logoipsum-357.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-361.png',
+		iconUrl: './icons/logoipsum-361.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-371.png',
+		iconUrl: './icons/logoipsum-371.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-374.png',
+		iconUrl: './icons/logoipsum-374.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-381.png',
+		iconUrl: './icons/logoipsum-381.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-384.png',
+		iconUrl: './icons/logoipsum-384.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-392.png',
+		iconUrl: './icons/logoipsum-392.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-394.png',
+		iconUrl: './icons/logoipsum-394.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-397.png',
+		iconUrl: './icons/logoipsum-397.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-403.png',
+		iconUrl: './icons/logoipsum-403.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-327.png',
+		iconUrl: './icons/logoipsum-327.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-295.png',
+		iconUrl: './icons/logoipsum-295.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-300.png',
+		iconUrl: './icons/logoipsum-300.png',
 	},
 	{
 		companyName: faker.company.name(),
-		iconUrl: '/icons/logoipsum-274.png',
+		iconUrl: './icons/logoipsum-274.png',
 	},
 ];
 

@@ -119,7 +119,7 @@ function Testimonial({ product }: { product: { name: string } }) {
 	return (
 		<div className="w-full p-2 flex flex-col gap-2 rounded-mode-sm bg-primary border-mode-sm shadow-mode-sm">
 			<div className="px-2 rounded-mode-sm bg-bg border-mode-sm">
-				<h2 className="text-center font-mode-header text-2xl font-bold">{`People can't get enought of ${product.name}!`}</h2>
+				<h2 className="text-center font-mode-header text-2xl font-bold">{`People can't get enough of ${product.name}!`}</h2>
 			</div>
 			<div className="p-4 flex justify-center items-start flex-wrap gap-4 700:flex-row">
 				{columnTestimonialData.map(x => {

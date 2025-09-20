@@ -75,7 +75,7 @@ function Message({ content }: { content: MessageInterface }) {
 	return (
 		<div
 			ref={ref}
-			className={`message ${content.userId === Number(import.meta.env.VITE_USER_ID)
+			className={`message ${content.userId === 2
 				? "self-end hidden-user-1"
 				: "self-start hidden-user-2"
 				} text-text rounded-mode-md border-mode-sm shadow-mode-sm mode-transform`}
